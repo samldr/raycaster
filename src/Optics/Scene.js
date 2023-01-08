@@ -2,6 +2,7 @@ const { Ray } = require("./Ray.js");
 const { Item } = require("./Item.js");
 const { LightSource } = require("./LightSource.js");
 const { cos, sin } = require("mathjs");
+const { Wall } = require("./Wall.js");
 
 class Scene {
   //list of Items
@@ -10,7 +11,7 @@ class Scene {
   //default 1000 1000
 
   NUM_RAYS = 100;
-  MAX_BOUNCES = 3;
+  MAX_BOUNCES = 8;
 
   items = [];
   rays = [];
@@ -23,6 +24,12 @@ class Scene {
     for (let i = 0; i < items.length; i++) {
       this.items[i] = items[i];
     }
+
+    items.push(new Wall(-10, -10, 1010, -10));
+    items.push(new Wall(1010, 1010, 1010, -10));
+    items.push(new Wall(1010, 1010, -10, 1010));
+    items.push(new Wall(-10, -10, -10, 1010));
+
     //creates all the rays
     //TODO: Abstract all the ray creation into "Source"
     this.NUM_RAYS = source.rayNum;

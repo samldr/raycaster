@@ -14,7 +14,7 @@ myMirror2 = new Mirror(100, 100, 400, 400);
 myMirror3 = new Mirror(950, 950, 50, 950);
 myMirror4 = new Mirror(950, 50, 950, 950);
 myWall = new Mirror(50, 950, 50, 50);
-myLightSource = new LightSource([500, 300], 10, 1000, 0);
+myLightSource = new LightSource([500, 300], 10, 3000, 0);
 myScene = new Scene(
   [myMirror, myMirror3, myMirror2, myWall, myMirror4],
   myLightSource

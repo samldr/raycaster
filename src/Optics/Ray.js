@@ -3,16 +3,21 @@ const { distance, i } = require("mathjs");
 
 class Ray {
   //list of ray segments that form the ray
+  //first two indices are the coordinates of the point
+  //third index is the intensity
   segments = [];
 
   //current position and direction
   position = []; //2-dimensional vector
   direction = []; //2-dimensional vector
 
+  //intensity
+  intensity = 1;
+
   constructor(pos, dir) {
     this.position = [pos[0], pos[1]];
     this.direction = [dir[0], dir[1]];
-    this.segments = [[pos[0], pos[1]]];
+    this.segments = [[pos[0], pos[1], 1]];
   }
 
   //at the moment, this takes an array of items as an input
@@ -56,7 +61,7 @@ class Ray {
     let intersectPoint = minItem.intersectPoint(this);
 
     //add segment
-    this.segments.push([intersectPoint[0], intersectPoint[1]]);
+    this.segments.push([intersectPoint[0], intersectPoint[1], this.intensity]);
 
     //update position
     this.position = [intersectPoint[0], intersectPoint[1]];
