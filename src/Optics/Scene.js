@@ -7,7 +7,7 @@ class Scene {
   //make the dimensions changeable?
   //default 1000 1000
 
-  NUM_RAYS = 500;
+  NUM_RAYS = 50000;
   MAX_BOUNCES = 10;
 
   items = [];
