@@ -36,11 +36,6 @@ export default function TIR(
     const reflectedVec = reflection(
       inVec,
       normalVec,
-      critAng,
-      n,
-      alpha,
-      distance,
-      reflectedIntensity
     );
 
     //next, run this function again with the new vector
