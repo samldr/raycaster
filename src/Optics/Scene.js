@@ -1,5 +1,7 @@
 const { Ray } = require("./Ray.js");
 const { Item } = require("./Item.js");
+const { LightSource } = require("./LightSource.js");
+const { cos, sin } = require("mathjs");
 
 class Scene {
   //list of Items
@@ -7,15 +9,15 @@ class Scene {
   //make the dimensions changeable?
   //default 1000 1000
 
-  NUM_RAYS = 50000;
-  MAX_BOUNCES = 10;
+  NUM_RAYS = 100;
+  MAX_BOUNCES = 3;
 
   items = [];
   rays = [];
 
   //possible debugging: spread operator didn't work, array of items is getting passed in and treated as one parameter
 
-  constructor(items) {
+  constructor(items, source) {
     //adds all the items to the items array
     //this can probably just be accomplished by copying the array
     for (let i = 0; i < items.length; i++) {
@@ -23,9 +25,15 @@ class Scene {
     }
     //creates all the rays
     //TODO: Abstract all the ray creation into "Source"
+    this.NUM_RAYS = source.rayNum;
     for (let i = 0; i < this.NUM_RAYS; i++) {
       //TODO: remove magic numbers
-      this.rays[i] = new Ray([750, 900 + 0.01 * i], [-0.5 + 0.00001 * i, -1]);
+      for (let i = 0; i < source.rayNum; i++) {
+        let angle = (i + 1) * source.angleIncriment + source.rotation;
+        let vector = [cos(angle), sin(angle)];
+
+        this.rays[i] = new Ray(source.pos, vector);
+      }
     }
   }
 
