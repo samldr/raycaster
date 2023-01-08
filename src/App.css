@@ -1,6 +1,4 @@
 #mainCanvas {
-  height: 800px;
-  width: 800px;
   border-color: black;
   border-width: 0px;
   margin: 0px;
@@ -11,4 +9,28 @@
   margin: none;
   padding: none;
   border-width: none;
+}
+
+#titleCard {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #d5d5e1;
+  color: black;
+}
+
+#titleCard * {
+  background-color: #d5d5e1;
+}
+
+h1 {
+  font-size: 50px;
+  margin-top: -10px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 500;
 }

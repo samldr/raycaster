@@ -6,6 +6,7 @@ const { intersect, dot, multiply, subtract, norm } = require("mathjs");
 class Mirror extends ReflectiveItem {
   endpoint1;
   endpoint2;
+  type = "mirror";
 
   constructor(x1, y1, x2, y2) {
     super();

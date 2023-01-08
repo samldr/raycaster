@@ -10,11 +10,12 @@ const Canvas = (props) => {
     const ctx = canvas.getContext("2d");
     //Our first draw
     ctx.fillStyle = "#000000";
+    ctx.lineCap = "round";
     ctx.font = "50px serif";
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = "#ffffff";
     ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.01;
+    ctx.globalAlpha = 0.005;
     ctx.strokeStyle = "#ffffff";
     json.rays.forEach((ray) => {
       ctx.beginPath();
@@ -25,17 +26,27 @@ const Canvas = (props) => {
       //rectangle
     });
     ctx.globalAlpha = 1.0;
-    ctx.strokeStyle = "#0000ff";
-    ctx.lineWidth = 10;
+    ctx.strokeStyle = "#bdd2c5";
+    ctx.lineWidth = 7;
     json.items.forEach((item) => {
       if (item.type == null) {
+      } else if (item.type === "mirror") {
+        ctx.strokeStyle = "#bdd2c5";
+        ctx.beginPath();
+        ctx.moveTo(item.endpoint1[0], item.endpoint1[1]);
+        ctx.lineTo(item.endpoint2[0], item.endpoint2[1]);
+        ctx.stroke();
+      } else if (item.type === "wall") {
+        ctx.strokeStyle = "#48354a";
         ctx.beginPath();
         ctx.moveTo(item.endpoint1[0], item.endpoint1[1]);
         ctx.lineTo(item.endpoint2[0], item.endpoint2[1]);
         ctx.stroke();
       } else {
         //frosted box
-        ctx.strokeRect(
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "aaaaaa";
+        ctx.fillRect(
           item.topLeft[0],
           item.topLeft[1],
           item.bottomRight[0] - item.topLeft[0],
@@ -45,7 +56,14 @@ const Canvas = (props) => {
     });
   }, []);
 
-  return <canvas ref={canvasRef} width={1000} height={1000} {...props} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      width={window.innerWidth}
+      height={window.innerHeight}
+      {...props}
+    />
+  );
 };
 
 export default Canvas;

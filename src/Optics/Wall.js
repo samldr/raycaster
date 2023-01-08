@@ -6,6 +6,7 @@ const AbsorbingItem = require("./AbsorbingItem");
 class Wall extends AbsorbingItem {
   endpoint1;
   endpoint2;
+  type = "wall";
 
   constructor(x1, y1, x2, y2) {
     super();
