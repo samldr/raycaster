@@ -14,6 +14,9 @@ class Ray {
   //intensity
   intensity = 1;
 
+  //in a different refractive index?
+  notInAir = false;
+
   constructor(pos, dir) {
     this.position = [pos[0], pos[1]];
     this.direction = [dir[0], dir[1]];

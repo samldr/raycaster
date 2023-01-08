@@ -15,7 +15,7 @@ myMirror3 = new Mirror(950, 950, 50, 950);
 myMirror4 = new Mirror(950, 50, 950, 950);
 myMirror2 = new Mirror(50, 950, 50, 50);
 myFB = new FrostedBox([100, 400], [300, 600], 2.5);
-myLightSource = new LightSource([800, 800], 20, 1000, 195);
+myLightSource = new LightSource([400, 500], 0, 100, 195);
 myScene = new Scene(
   [myMirror, myMirror3, myMirror2, myMirror4, myFB],
   myLightSource

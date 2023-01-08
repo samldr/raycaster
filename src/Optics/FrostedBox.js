@@ -48,8 +48,18 @@ class FrostedBox extends RefractiveItem {
 
   newDirection(ray) {
     const theta1 = atan(ray.direction[1] / ray.direction[0]);
-    const theta2 = asin(sin(theta1) / this.n);
-    return [cos(theta2), sin(theta2)];
+    if (!ray.notInAir) {
+      ray.notInAir = true;
+      const theta2 = asin(sin(theta1) / this.n);
+      if (ray.direction[0] < 0) {
+        return [-cos(theta2), sin(theta2)];
+      }
+      return [cos(theta2), sin(theta2)];
+    } else {
+      ray.notInAir = false;
+      const theta2 = asin(this.n * sin(theta1));
+      return [cos(theta2), sin(theta2)];
+    }
   }
 
   //FUNCTION OF SHAME
