@@ -15,7 +15,7 @@ const Canvas = (props) => {
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = "#ffffff";
     ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.005;
+    ctx.globalAlpha = 0.007;
     ctx.strokeStyle = "#ffffff";
     json.rays.forEach((ray) => {
       ctx.beginPath();

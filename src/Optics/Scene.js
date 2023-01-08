@@ -11,7 +11,7 @@ class Scene {
   //default 1000 1000
 
   NUM_RAYS = 100;
-  MAX_BOUNCES = 8;
+  MAX_BOUNCES = 5;
 
   items = [];
   rays = [];

@@ -14,10 +14,14 @@ myMirror = new Mirror(0, 0, 950, 0);
 myMirror3 = new Mirror(950, 950, 50, 950);
 myMirror4 = new Mirror(950, 50, 950, 950);
 myMirror2 = new Mirror(50, 950, 50, 50);
-myFB = new FrostedBox([100, 400], [300, 600], 2.5);
-myLightSource = new LightSource([400, 500], 4, 5000, 195);
+//myWall = new Wall(975, 975, 75, 975)
+myMirror5 = new Mirror(400,400,230,230)
+myMirror6 = new Mirror(800,302,600,302)
+
+//myFB = new FrostedBox([100, 400], [300, 600], 2.5);
+myLightSource = new LightSource([700, 500], 360, 12000, 270);
 myScene = new Scene(
-  [myMirror, myMirror3, myMirror2, myMirror4, myFB],
+  [myMirror, myMirror3, myMirror2, myMirror4, myMirror5, myMirror6],
   myLightSource
 );
 myScene.simulate();
