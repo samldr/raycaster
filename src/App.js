@@ -1,8 +1,9 @@
 import "./App.css";
-import Canvas from "./Components/Canvas";
+//import Canvas from "./Components/Canvas";
+import { Frame } from "./Components/Frame";
 
 function App() {
-  return <Canvas id="mainCanvas"></Canvas>;
+  return <Frame/>;
 }
 
 export default App;
