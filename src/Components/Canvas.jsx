@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import json from "./data/sceneFile.json";
+import json from "../data/sceneFile.json";
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
