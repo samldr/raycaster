@@ -25,4 +25,4 @@ class RefractiveItem extends Item {
   }
 }
 
-module.exports = RefractiveItem;
+module.exports.RefractiveItem = RefractiveItem;

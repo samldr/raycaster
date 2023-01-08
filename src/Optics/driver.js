@@ -8,15 +8,16 @@ const { ReflectiveItem } = require("./ReflectiveItem.js");
 const { Scene } = require("./Scene.js");
 const { Util } = require("./Util.js");
 const { LightSource } = require("./LightSource");
+const { FrostedBox } = require("./FrostedBox");
 
 myMirror = new Mirror(0, 0, 950, 0);
-myMirror2 = new Mirror(100, 100, 400, 400);
 myMirror3 = new Mirror(950, 950, 50, 950);
 myMirror4 = new Mirror(950, 50, 950, 950);
-myWall = new Mirror(50, 950, 50, 50);
-myLightSource = new LightSource([500, 300], 10, 3000, 0);
+myMirror2 = new Mirror(50, 950, 50, 50);
+myFB = new FrostedBox([100, 400], [300, 600], 2.5);
+myLightSource = new LightSource([800, 800], 20, 1000, 195);
 myScene = new Scene(
-  [myMirror, myMirror3, myMirror2, myWall, myMirror4],
+  [myMirror, myMirror3, myMirror2, myMirror4, myFB],
   myLightSource
 );
 myScene.simulate();

@@ -5,3 +5,4 @@ TODO
 - remove signed distance function 69s
 - have less expensive light source
 - bounding set of diagonal parallel lines instead of box
+- have ray line intersection in external module

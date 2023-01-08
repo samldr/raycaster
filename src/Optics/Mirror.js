@@ -16,9 +16,6 @@ class Mirror extends ReflectiveItem {
   //possible error: check if ray is actually a ray object
   //TODO: DEFINITE ERROR: intersection point with mirror will be calulated even
   //if the ray passes above the mirror and doesn't intersect with it
-  signedDistance(ray) {
-    return 69;
-  }
 
   //ISSUE!!!!! if the ray extends past the mirror, an intersection will be given where one doesn't exist
   //COMPENSATE FOR THIS!!
