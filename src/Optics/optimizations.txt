@@ -1,0 +1,5 @@
+TODO
+
+- Check if rays have left the bounding box and stop simulating them if this has happened
+- Distance from line checking can probably be more efficient
+- remove signed distance function 69s
