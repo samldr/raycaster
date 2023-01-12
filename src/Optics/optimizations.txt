@@ -1,8 +1,0 @@
-TODO
-
-- Check if rays have left the bounding box and stop simulating them if this has happened
-- Distance from line checking can probably be more efficient
-- remove signed distance function 69s
-- have less expensive light source
-- bounding set of diagonal parallel lines instead of box
-- have ray line intersection in external module

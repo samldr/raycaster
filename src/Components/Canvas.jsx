@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import json from "../data/sceneFile.json";
+import json from "../optics/sceneFile.json";
+
+const settings = require("../optics/settings.json")
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
@@ -14,8 +16,8 @@ const Canvas = (props) => {
     ctx.font = "50px serif";
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = "#ffffff";
-    ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.007;
+    ctx.lineWidth = settings.rayThickness;
+    ctx.globalAlpha = settings.rayTransparency;
     ctx.strokeStyle = "#ffffff";
     json.rays.forEach((ray) => {
       ctx.beginPath();

@@ -3,6 +3,7 @@ const { Item } = require("./Item.js");
 const { LightSource } = require("./LightSource.js");
 const { cos, sin } = require("mathjs");
 const { Wall } = require("./Wall.js");
+const settings = require("./settings.json")
 
 class Scene {
   //list of Items
@@ -11,7 +12,7 @@ class Scene {
   //default 1000 1000
 
   NUM_RAYS = 100;
-  MAX_BOUNCES = 5;
+  MAX_BOUNCES = settings.maxBounces;
 
   items = [];
   rays = [];
