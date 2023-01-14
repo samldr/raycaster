@@ -7,11 +7,19 @@ class Mirror extends ReflectiveItem {
   endpoint1;
   endpoint2;
   type = "mirror";
+  normal;
 
   constructor(x1, y1, x2, y2) {
     super();
     this.endpoint1 = [x1, y1];
     this.endpoint2 = [x2, y2];
+
+    const invSlopeVec = [
+      this.endpoint1[1] - this.endpoint2[1],
+      this.endpoint2[0] - this.endpoint1[0],
+    ];
+
+    this.normal = multiply(1 / norm(invSlopeVec), invSlopeVec);
   }
 
   //possible error: check if ray is actually a ray object
@@ -45,16 +53,9 @@ class Mirror extends ReflectiveItem {
   }
 
   newDirection(ray, intersection) {
-    const invSlopeVec = [
-      this.endpoint1[1] - this.endpoint2[1],
-      this.endpoint2[0] - this.endpoint1[0],
-    ];
-
-    const normal = multiply(1 / norm(invSlopeVec), invSlopeVec);
-
     const outVec = subtract(
       ray.direction,
-      multiply(2 * dot(ray.direction, normal), normal)
+      multiply(2 * dot(ray.direction, this.normal), this.normal)
     );
     return outVec;
   }
