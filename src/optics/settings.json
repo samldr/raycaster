@@ -1,9 +1,9 @@
 {
-    "maxBounces":5,
-    "maxRays":1000,
-    "sourcePos":[500,500],
-    "sourceAngle":1,
-    "sourceOffset":-95,
-    "rayThickness":1,
-    "rayTransparency":0.07
+  "maxBounces": 5,
+  "maxRays": 1000,
+  "sourcePos": [500, 500],
+  "sourceAngle": 1,
+  "sourceOffset": -95,
+  "rayThickness": 1,
+  "rayTransparency": 0.007
 }

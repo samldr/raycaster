@@ -1,6 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# really big and gets generated anyway
 sceneFile.json
+# logs should be kept locally so we can track which computer simulated them
+# we will combine data later
+benchmarkLog.csv
 
 # dependencies
 /node_modules

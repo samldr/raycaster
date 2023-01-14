@@ -26,6 +26,7 @@ class Scene {
       this.items[i] = items[i];
     }
 
+    //bounding box
     items.push(new Wall(-10, -10, 1010, -10));
     items.push(new Wall(1010, 1010, 1010, -10));
     items.push(new Wall(1010, 1010, -10, 1010));
