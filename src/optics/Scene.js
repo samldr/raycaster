@@ -1,7 +1,7 @@
 const { Ray } = require("./Ray.js");
 const { Item } = require("./Item.js");
 const { LightSource } = require("./LightSource.js");
-const { cos, sin } = require("mathjs");
+const { cos, sin, sqrt } = require("mathjs");
 const { Wall } = require("./Wall.js");
 const settings = require("./settings.json")
 

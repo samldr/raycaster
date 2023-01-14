@@ -1,3 +1,5 @@
+let start = Date.now();
+
 const { AbsorbingItem } = require("./AbsorbingItem.js");
 const { Item } = require("./Item.js");
 const { Mirror } = require("./Mirror.js");
@@ -43,5 +45,8 @@ var fs = require("fs");
 const { config } = require("process");
 fs.writeFile("src/optics/sceneFile.json", json, "utf8", function (err) {
   if (err) throw err;
-  console.log("complete");
+  //console.log("complete");
 });
+
+let end = Date.now()
+console.log('took '+ (end - start) +' ms to complete')
