@@ -2,17 +2,9 @@ let csvLog = "\n";
 let start = (last = end = Date.now());
 const dateForFile = new Date();
 
-const { AbsorbingItem } = require("./AbsorbingItem.js");
-const { Item } = require("./Item.js");
 const { Mirror } = require("./Mirror.js");
-const { Wall } = require("./Wall.js");
-const { Ray } = require("./Ray.js");
-const { RaySegment } = require("./RaySegment.js");
-const { ReflectiveItem } = require("./ReflectiveItem.js");
 const { Scene } = require("./Scene.js");
-const { Util } = require("./Util.js");
 const { LightSource } = require("./LightSource");
-const { FrostedBox } = require("./FrostedBox");
 const settings = require("./settings.json");
 
 csvLog +=

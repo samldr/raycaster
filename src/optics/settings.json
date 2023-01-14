@@ -1,6 +1,6 @@
 {
   "maxBounces": 5,
-  "maxRays": 1000,
+  "maxRays": 10000,
   "sourcePos": [500, 500],
   "sourceAngle": 1,
   "sourceOffset": -95,

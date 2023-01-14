@@ -52,6 +52,7 @@ class Mirror extends ReflectiveItem {
     }
   }
 
+  //TODO: this can be put in the superclass
   newDirection(ray, intersection) {
     const outVec = subtract(
       ray.direction,
