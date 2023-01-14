@@ -1,4 +1,5 @@
-let start = Date.now();
+let last = Date.now();
+let end = Date.now();
 
 const { AbsorbingItem } = require("./AbsorbingItem.js");
 const { Item } = require("./Item.js");
@@ -28,11 +29,25 @@ myLightSource = new LightSource(
   settings.maxRays,
   settings.sourceOffset
 );
+
+end = Date.now();
+console.log("took " + (end - last) + " ms to construct scene objects");
+last = Date.now();
+
 myScene = new Scene(
   [myMirror, myMirror3, myMirror2, myMirror4, myMirror5],
   myLightSource
 );
+
+end = Date.now();
+console.log("took " + (end - last) + " ms to construct the scene itself");
+last = Date.now();
+
 myScene.simulate();
+
+end = Date.now();
+console.log("took " + (end - last) + " ms to simulate the scene");
+last = Date.now();
 
 let sceneJSON = {
   items: myScene.items,
@@ -41,6 +56,10 @@ let sceneJSON = {
 
 let json = JSON.stringify(sceneJSON);
 
+end = Date.now();
+console.log("took " + (end - last) + " ms to compile the json file");
+last = Date.now();
+
 var fs = require("fs");
 const { config } = require("process");
 fs.writeFile("src/optics/sceneFile.json", json, "utf8", function (err) {
@@ -48,5 +67,6 @@ fs.writeFile("src/optics/sceneFile.json", json, "utf8", function (err) {
   //console.log("complete");
 });
 
-let end = Date.now()
-console.log('took '+ (end - start) +' ms to complete')
+end = Date.now();
+console.log("took " + (end - last) + " ms to write to the JSON file");
+last = Date.now();
