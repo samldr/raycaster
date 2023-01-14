@@ -3,7 +3,7 @@ const { Item } = require("./Item.js");
 const { LightSource } = require("./LightSource.js");
 const { cos, sin, sqrt } = require("mathjs");
 const { Wall } = require("./Wall.js");
-const settings = require("./settings.json")
+const settings = require("./settings.json");
 
 class Scene {
   //list of Items
@@ -34,14 +34,13 @@ class Scene {
     //creates all the rays
     //TODO: Abstract all the ray creation into "Source"
     this.NUM_RAYS = source.rayNum;
-    for (let i = 0; i < this.NUM_RAYS; i++) {
-      //TODO: remove magic numbers
-      for (let i = 0; i < source.rayNum; i++) {
-        let angle = (i + 1) * source.angleIncriment + source.rotation;
-        let vector = [cos(angle), sin(angle)];
 
-        this.rays[i] = new Ray(source.pos, vector);
-      }
+    //TODO: remove magic numbers
+    for (let i = 0; i < source.rayNum; i++) {
+      let angle = (i + 1) * source.angleIncriment + source.rotation;
+      let vector = [cos(angle), sin(angle)];
+
+      this.rays[i] = new Ray(source.pos, vector);
     }
   }
 
