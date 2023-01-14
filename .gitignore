@@ -4,7 +4,7 @@
 sceneFile.json
 # logs should be kept locally so we can track which computer simulated them
 # we will combine data later
-benchmarkLog.csv
+/benchmark
 
 # dependencies
 /node_modules

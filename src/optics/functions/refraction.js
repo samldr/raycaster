@@ -1,28 +1,53 @@
-// does not include internal reflection at the moment
-const { dot, multiply, add, sqrt, subtract, abs } = require('mathjs')
+// does not support intensity or spawning new rays at the moment
+const { dot, multiply, add, sqrt } = require('mathjs')
+const reflect = require('./reflection')
 
-function refract(i, n, n_1, n_2, crit){
-    //i = incident vector
-    //n = normal vector
+module.exports = function refract(incident, normal, n_1, n_2){
+    //incident = incident vector
+    //normal = normal vector
     //n_1 = incident refractive index
-    //n_2 = refracted refractive index
-    //crit = critical angle of n_2 material
-
-
-    const mu = n_1/n_2;
+    //n_2 = transmitted refractive index
     
-    //checks to make sure the right normal vector is chosen
-    if(dot(i,n) > 0){
-        n = multiply(-1,n)
+    const ndoti = dot(normal,incident) // -cos(theta) shorthand
+
+    // assigns proper normal vector for refraction formula
+    if(ndoti < 0){
+        normal = multiply(-1,normal)
     }
 
+    const mu = n_1/n_2;
+    const sin2 = (mu**2)*(1-(ndoti**2)) //sin^2(theta) shorthand
 
-    //need to be within the critical angle to do this first
-    const ni = dot(n,i)
-    const out = add(n*sqrt(abs(1-mu^2*(1-ni^2))), multiply(mu, subtract(i,multiply(ni,n))))
+    let transmitted, reflected
 
-    return out
+    //checks if greater than the critical angle
+    if(sin2 > 1){
+
+        //total internal reflection
+            reflected = reflect(incident, normal)
+
+    } else if(sin2 <= 1){
+
+        //refraction, using snell's law in vector form
+        transmitted = add(
+            multiply(
+                mu,
+                incident
+            ),
+            multiply(
+                mu,
+                -ndoti,
+                normal
+            ),
+            multiply(
+                normal,
+                sqrt(1-sin2)
+            )
+        )
+    }
+    
+    return {normal, incident, transmitted, reflected }
 
 }
 
-console.log(refract([0.5,-0.866],[0, -1],1,1.2))
+//console.log(refract([0.7071,-0.7071],[0, -1],1,1.5))
