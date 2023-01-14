@@ -2,10 +2,11 @@ The program simulates thousands of rays of light as they travel through a scene 
 
 ## Instructions
 
-1. run `npm start` to start the app
-2. edit and save `src/optics/settings.json` to customize the scene
-3. to add more items (mirrors, walls) to the scene, edit `src/optics/scene.js`
-4. run `node src/optics/driver.js` to recast the rays
+1. run `npm install` to install required modules
+2. run `npm start` to start the app
+3. edit and save `src/optics/settings.json` to customize the scene
+4. to add more items (mirrors, walls) to the scene, edit `src/optics/scene.js`
+5. run `node src/optics/driver.js` to recast the rays
 
 ## TODO
 
