@@ -93,6 +93,10 @@ console.log("total time elapsed: " + (end - start) + " ms");
 csvLog += end - start + ",";
 
 //write to the csv log file
+// TODO: this could probably be done better nolan
+if (!fs.existsSync("./benchmark")) {
+  fs.mkdirSync('./benchmark')
+}
 fs.appendFile("benchmark/benchmarkLog.csv", csvLog, "utf8", function (err) {
   if (err) throw err;
 });
