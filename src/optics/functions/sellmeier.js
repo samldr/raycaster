@@ -3,9 +3,10 @@
 // -more materials
 
 function sellmeier(wavelength, material){
-    // wavelength in micrometers
+    // wavelength in nanometers
     // refractive index depends on wavelength
-
+    
+    wavelength = wavelength/1000
     if(material == 'air'){
 
         return n = 1
@@ -19,4 +20,4 @@ function sellmeier(wavelength, material){
 
 }
 
-console.log(sellmeier(0.76,'soda-lime'))
+console.log(sellmeier(662,'soda-lime'))
