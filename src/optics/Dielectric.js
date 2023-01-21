@@ -1,16 +1,16 @@
 const { RefractiveItem } = require("./RefractiveItem.js");
 const { Ray } = require("./Ray.js");
-const refract = require('./functions/refraction')
+const refract = require("./functions/refraction");
+const { multiply, norm, intersect } = require("mathjs");
 
-class Dielectric extends RefractiveItem{
-    
-    type = 'dielectric'
-    n;
-    endpoint1;
-    endpoint2;
-    normal;
+class Dielectric extends RefractiveItem {
+  type = "dielectric";
+  n;
+  endpoint1;
+  endpoint2;
+  normal;
 
-  constructor(x1, y1, x2, y2) {
+  constructor(x1, y1, x2, y2, n) {
     super();
     this.endpoint1 = [x1, y1];
     this.endpoint2 = [x2, y2];
@@ -55,26 +55,38 @@ class Dielectric extends RefractiveItem{
   }
 
   //TODO: this can be put in the superclass
-  newDirection(ray, n) {
-
-    if(/*the n of the last ray segment*/  == 1){
-        const n_1 =  1;
-        const n_2 =  /* the n of this dielectric */;
+  newDirection(ray) {
+    let n_1, n_2;
+    if (ray.n_last == 1) {
+      n_1 = 1;
+      n_2 = this.n;
     } else {
-        const n_1 = /*the n of the last ray segment*/;
-        const n_2 = 1;
+      n_1 = ray.n_last;
+      n_2 = 1;
     }
-    
-    const vectors = refract(ray.direction, this.normal, /*intensity of last ray segment*/, n_1, n_2)
 
-    if(vectors.transmitted == undefined){
-        return vectors.reflected
+    //TODO: change refractive index to the last one of the ray
+    const vectors = refract(
+      ray.direction,
+      this.normal,
+      ray.intensity,
+      n_1,
+      n_2
+    );
+
+    if (vectors.transmitted == undefined) {
+      return vectors.reflected;
     } else {
-        return vectors.transmitted
-        // and spawn a new vector with vectors.reflected 
-        
+      return vectors.transmitted;
+      // and spawn a new vector with vectors.reflected
     }
+  }
+
+  getNormal() {
+    return this.normal;
   }
 
   //TODO: figure out if a normal vector function must be implemented
 }
+
+exports.Dielectric = Dielectric;

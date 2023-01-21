@@ -30,6 +30,12 @@ class Item {
     );
   }
 
+  getNormal(intersection) {
+    throw new Error(
+      "getNormal must be implemented; it cannot be called from an abstract class (Item)"
+    );
+  }
+
   //TODO: figure out if a normal vector function must be implemented
 }
 module.exports = Item;

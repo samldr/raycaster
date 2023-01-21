@@ -65,16 +65,6 @@ class Ray {
     //pass in the ray to get the intersection point
     //closest intersection point
     let intersectPoint = minItem.intersectPoint(this);
-    //gets normal to surface from object
-    let normal = minItem.getNormal(intersectPoint);
-    //gets current n from object;
-    let n_2 = midItem.n ? midItem.n : this.n_last;
-    //this.last_n in the thing
-    let n_1 = this.last_n;
-    //incident is this.position
-    let incident = this.position;
-    //this.intensity
-    let intensity = this.intensity;
 
     //PUT YOUR FUNCTION IN BETWEEN HERE
 
@@ -93,6 +83,11 @@ class Ray {
       return null;
     }
 
+    if (this.n_last == 1 && minItem.n && minItem.n !== 1) {
+      this.n_last = minItem.n;
+    } else if (this.n_last != 1) {
+      this.n_last = 1;
+    }
     return 1;
   }
 }

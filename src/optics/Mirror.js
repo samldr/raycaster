@@ -61,6 +61,10 @@ class Mirror extends ReflectiveItem {
     return outVec;
   }
 
+  getNormal(intersection) {
+    return this.normal;
+  }
+
   //TODO: figure out if a normal vector function must be implemented
 }
 

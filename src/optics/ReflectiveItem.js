@@ -23,6 +23,12 @@ class ReflectiveItem extends Item {
       "newDirection must be implemented; it cannot be called from an abstract class (Item)"
     );
   }
+
+  getNormal(intersection) {
+    throw new Error(
+      "getNormal must be implemented; it cannot be called from an abstract class (Item)"
+    );
+  }
 }
 
 module.exports = ReflectiveItem;

@@ -1,13 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import json from "../optics/sceneFile.json";
 
-const settings = require("../optics/settings.json")
+const settings = require("../optics/settings.json");
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    console.log(json);
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     //Our first draw
@@ -32,7 +31,7 @@ const Canvas = (props) => {
     ctx.lineWidth = 7;
     json.items.forEach((item) => {
       if (item.type == null) {
-      } else if (item.type === "mirror") {
+      } else if (item.type === "mirror" || item.type === "dielectric") {
         ctx.strokeStyle = "#bdd2c5";
         ctx.beginPath();
         ctx.moveTo(item.endpoint1[0], item.endpoint1[1]);
