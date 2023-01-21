@@ -14,6 +14,9 @@ class Ray {
   //intensity
   intensity = 1;
 
+  //last refractive index
+  n_last = 1;
+
   //in a different refractive index?
   notInAir = false;
 
@@ -62,6 +65,20 @@ class Ray {
     //pass in the ray to get the intersection point
     //closest intersection point
     let intersectPoint = minItem.intersectPoint(this);
+    //gets normal to surface from object
+    let normal = minItem.getNormal(intersectPoint);
+    //gets current n from object;
+    let n_2 = midItem.n ? midItem.n : this.n_last;
+    //this.last_n in the thing
+    let n_1 = this.last_n;
+    //incident is this.position
+    let incident = this.position;
+    //this.intensity
+    let intensity = this.intensity;
+
+    //PUT YOUR FUNCTION IN BETWEEN HERE
+
+    //AND HERE plz
 
     //add segment
     this.segments.push([intersectPoint[0], intersectPoint[1], this.intensity]);
