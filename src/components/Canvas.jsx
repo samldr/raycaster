@@ -43,6 +43,11 @@ const Canvas = (props) => {
         ctx.moveTo(item.endpoint1[0], item.endpoint1[1]);
         ctx.lineTo(item.endpoint2[0], item.endpoint2[1]);
         ctx.stroke();
+      } else if (item.type == "mirrorball") {
+        ctx.strokeStyle = "#48354a";
+        ctx.beginPath();
+        ctx.arc(item.center[0], item.center[1], item.r, 0, 2 * 3.14159);
+        ctx.stroke();
       } else {
         //frosted box
         ctx.globalAlpha = 0.2;

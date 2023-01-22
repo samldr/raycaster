@@ -66,15 +66,9 @@ class Dielectric extends RefractiveItem {
     }
 
     //TODO: change refractive index to the last one of the ray
-    const vectors = refract(
-      ray.direction,
-      this.normal,
-      ray.intensity,
-      n_1,
-      n_2
-    );
-
-    if (vectors.transmitted == undefined) {
+    let vectors = refract(ray.direction, this.normal, ray.intensity, n_1, n_2);
+    //console.log(vectors);
+    if (!vectors.transmitted) {
       return vectors.reflected;
     } else {
       return vectors.transmitted;

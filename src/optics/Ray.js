@@ -46,7 +46,7 @@ class Ray {
     for (let i = 0; i < items.length; i++) {
       let point = items[i].intersectPoint(this);
       let dist;
-      if (point == Infinity || point == null) {
+      if (point == Infinity || point == null || point.length == 0) {
         dist = Infinity;
       } else {
         dist = distance(point, this.position);
