@@ -3,7 +3,8 @@ const { floor } = require("mathjs");
 // this function is adapted from Dan Bruton's FORTRAN script at http://www.physics.sfasu.edu/astro/color/spectra.html and http://www.midnightkite.com/color.html
 // takes an input wavelength and gives an approximate rgb value, to use for diffusion
 // 380nm < wavelength < 700nm
-module.exports = function wl2rgb(wavelength){ 
+//module.exports = 
+function wl2rgb(wavelength){ 
 
     let red, green, blue;
     if (wavelength >= 380 && wavelength <= 440) {
@@ -36,13 +37,20 @@ module.exports = function wl2rgb(wavelength){
         green = -1 * (wavelength - 645) / (645 - 580);
         blue = 0;
 
-    } else if (wavelength >= 645 && wavelength <= 780) {
+    } else if (wavelength >= 645 && wavelength <= 700) {
 
         red = 1;
         green = 0;
         blue = 0;
 
+    } else if (wavelength >= 700 && wavelength <= 780){
+
+        red = 1 + (1-100/255)/(700-780)*( wavelength - 700 );
+        green = 0;
+        blue = 0;
     }
 
     return [floor(255*red), floor(255*green), floor(255*blue)]
 }
+
+console.log(wl2rgb(720))

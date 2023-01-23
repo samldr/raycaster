@@ -26,10 +26,11 @@ console.log("took " + (end - last) + " ms to import modules and settings");
 csvLog += end - last + ",";
 last = Date.now();
 
-myMirror = new Wall(0, 0, 1000, 0);
-myMirror3 = new Wall(1000, 1000, 0, 1000);
-myMirror4 = new Wall(1000, 0, 1000, 1000);
-myMirror2 = new Wall(0, 1000, 0, 0);
+myWall = new Mirror(350, 750, 700, 700)
+myMirror = new Wall(0, 0, 1440, 0);
+myMirror3 = new Wall(1440, 810, 0, 810);
+myMirror4 = new Wall(1440, 0, 1440, 810);
+myMirror2 = new Wall(0, 810, 0, 0);
 //myMirrorBall = new MirrorBall([800, 800], 80);
 //myWall = new Wall(975, 975, 75, 975)
 myMirror5 = new Mirror(400, 400, 230, 230);
@@ -59,6 +60,7 @@ myScene = new Scene(
     myMirror3,
     myMirror2,
     myMirror4,
+    myWall,
     //myMirrorBall,
     //myMirror5,
     myDialectric1,
