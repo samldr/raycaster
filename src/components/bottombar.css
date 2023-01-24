@@ -1,0 +1,12 @@
+.main{
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+    flex-direction: column;
+}
+
+a{
+    color: inherit;
+}

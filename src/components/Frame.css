@@ -3,9 +3,9 @@
     color:white;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding-top: 50px;
     height: 1 vh;
     width: 1 wh;
 }
