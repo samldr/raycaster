@@ -50,8 +50,8 @@ class MirrorBall extends ReflectiveItem {
       let y0 = (solution[0] - ray.position[0]) * m + ray.position[1];
       let y1 = (solution[1] - ray.position[0]) * m + ray.position[1];
       //console.log([solution[0], y0], ray.position);
-      let d0 = distance([solution[0], y0], ray.position);
-      let d1 = distance([solution[1], y1], ray.position);
+      let d0 = distance([solution[0], y0], [ray.position[0], ray.position[1]]);
+      let d1 = distance([solution[1], y1], [ray.position[0], ray.position[1]]);
       if (d0 < d1) {
         return [solution[0], y0];
       } else {
@@ -65,7 +65,7 @@ class MirrorBall extends ReflectiveItem {
       intersection[0] - this.center[0],
       intersection[1] - this.center[1],
     ];
-    let normal = multiply(1 / norm(normal_raw), normal_raw);
+    let normal = multiply(-1 / norm(normal_raw), normal_raw);
     // console.log(
     //   "incident",
     //   ray.direction,

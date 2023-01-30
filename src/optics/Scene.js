@@ -37,7 +37,7 @@ class Scene {
     //TODO: remove magic numbers
     for (let i = 0; i < source.rayNum; i++) {
       let angle = (i + 1) * source.angleIncriment + source.rotation;
-      let vector = [cos(angle), sin(angle)];
+      let vector = [-cos(angle), -sin(angle)];
 
       this.rays[i] = new Ray(source.pos, vector);
     }

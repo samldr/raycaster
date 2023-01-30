@@ -32,10 +32,12 @@ class Dielectric extends RefractiveItem {
   //COMPENSATE FOR THIS!!
   intersectPoint(ray) {
     //intersection of lines formed by the mirror and ray, both defined by two points
-    let intersection = intersect(this.endpoint1, this.endpoint2, ray.position, [
-      ray.position[0] + ray.direction[0],
-      ray.position[1] + ray.direction[1],
-    ]);
+    let intersection = intersect(
+      this.endpoint1,
+      this.endpoint2,
+      [ray.position[0], ray.position[1]],
+      [ray.position[0] + ray.direction[0], ray.position[1] + ray.direction[1]]
+    );
     if (intersection == null) {
       return null;
     }

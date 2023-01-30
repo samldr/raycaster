@@ -83,9 +83,9 @@ class Ray {
       return null;
     }
 
-    if (this.n_last == 1 && minItem.n && minItem.n !== 1) {
+    if (this.n_last === 1 && minItem.n && minItem.n !== 1) {
       this.n_last = minItem.n;
-    } else if (this.n_last != 1) {
+    } else if (this.n_last !== 1) {
       this.n_last = 1;
     }
     return 1;

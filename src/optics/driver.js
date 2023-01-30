@@ -26,18 +26,18 @@ console.log("took " + (end - last) + " ms to import modules and settings");
 csvLog += end - last + ",";
 last = Date.now();
 
-myMirror = new Wall(0, 0, 1000, 0);
-myMirror3 = new Wall(1000, 1000, 0, 1000);
-myMirror4 = new Wall(1000, 0, 1000, 1000);
-myMirror2 = new Wall(0, 1000, 0, 0);
-//myMirrorBall = new MirrorBall([800, 800], 80);
+myMirror = new Mirror(0, 0, 1000, 0);
+myMirror3 = new Mirror(1000, 1000, 0, 1000);
+myMirror4 = new Mirror(1000, 0, 1000, 1000);
+myMirror2 = new Mirror(0, 1000, 0, 0);
+myMirrorBall = new MirrorBall([800, 800], 80);
 //myWall = new Wall(975, 975, 75, 975)
 myMirror5 = new Mirror(400, 400, 230, 230);
 //myMirror6 = new Mirror(800,302,600,302)
 myDialectric1 = new Dielectric(350, 100, 350, 550, 1.5);
 myDialectric2 = new Dielectric(700, 550, 350, 550, 1.5);
 myDialectric3 = new Dielectric(700, 550, 700, 100, 1.5);
-myDialectric4 = new Dielectric(350, 100, 700, 100, 1.5);
+myDialectric4 = new Dielectric(700, 100, 350, 100, 1.5);
 
 //myFB = new FrostedBox([100, 400], [300, 600], 2.5);
 myLightSource = new LightSource(
@@ -59,7 +59,7 @@ myScene = new Scene(
     myMirror3,
     myMirror2,
     myMirror4,
-    //myMirrorBall,
+    myMirrorBall,
     //myMirror5,
     myDialectric1,
     myDialectric2,
