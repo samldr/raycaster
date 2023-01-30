@@ -65,8 +65,9 @@ const Canvas = (props) => {
   return (
     <canvas
       ref={canvasRef}
-      width={window.innerWidth}
-      height={window.innerHeight}
+      width={1440}
+      height={810}
+      style={{display: "flexbox"}}
       {...props}
     />
   );
