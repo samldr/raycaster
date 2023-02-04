@@ -23,7 +23,32 @@ rays per source
 export const SettingsForm = () => {
   return (
     <>
-      <Box sx={{ padding: 3 }}>
+      <Box sx={{ padding: 3, minWidth: 300 }}>
+        <Paper sx={{ mb: 3 }}>
+          <Typography variant="h6" align="center" sx={{ pt: 1 }}>
+            Rendering
+          </Typography>
+          <FormGroup sx={{ padding: 1 }}>
+            <TextField
+              id="filled-basic"
+              label="Ray thickness"
+              variant="filled"
+              sx={{ margin: 1 }}
+            />
+
+            <TextField
+              id="filled-basic"
+              label="Ray alpha"
+              variant="filled"
+              sx={{ margin: 1 }}
+            />
+
+            <FormControlLabel
+              label="Draw Scene Objects"
+              control={<Checkbox sx={{ ml: 1 }}></Checkbox>}
+            ></FormControlLabel>
+          </FormGroup>
+        </Paper>
         <Paper sx={{ mb: 3 }}>
           <Typography variant="h6" align="center" sx={{ pt: 1 }}>
             Simulation
@@ -64,61 +89,40 @@ export const SettingsForm = () => {
 
             <TextField
               id="filled-basic"
-              label="Rays per Source"
+              label="Number of Rays"
               variant="filled"
               sx={{ margin: 1 }}
             />
 
             <TextField
               id="filled-basic"
-              label="Source Angle"
+              label="Source Angle (deg)"
               variant="filled"
               sx={{ margin: 1 }}
             />
 
             <TextField
               id="filled-basic"
-              label="Canvas X"
+              label="Canvas Width"
               variant="filled"
               sx={{ margin: 1 }}
             />
 
             <TextField
               id="filled-basic"
-              label="Canvas Y"
-              variant="filled"
-              sx={{ margin: 1 }}
-            />
-
-            <Button variant="contained" sx={{ m: 1 }}>
-              Re-simulate
-            </Button>
-          </FormGroup>
-        </Paper>
-
-        <Paper sx={{ mb: 3 }}>
-          <Typography variant="h6" align="center" sx={{ pt: 1 }}>
-            Rendering
-          </Typography>
-          <FormGroup sx={{ padding: 1 }}>
-            <TextField
-              id="filled-basic"
-              label="Ray thickness"
-              variant="filled"
-              sx={{ margin: 1 }}
-            />
-
-            <TextField
-              id="filled-basic"
-              label="Ray alpha"
+              label="Canvas Height"
               variant="filled"
               sx={{ margin: 1 }}
             />
 
             <FormControlLabel
-              label="Draw Scene Objects"
+              label="Fullscreen Canvas"
               control={<Checkbox sx={{ ml: 1 }}></Checkbox>}
             ></FormControlLabel>
+
+            <Button variant="contained" sx={{ m: 1 }}>
+              Re-simulate
+            </Button>
           </FormGroup>
         </Paper>
       </Box>
