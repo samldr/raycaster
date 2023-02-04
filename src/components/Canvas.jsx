@@ -67,7 +67,7 @@ const Canvas = (props) => {
       ref={canvasRef}
       width={1440}
       height={810}
-      style={{display: "flexbox"}}
+      style={{ display: "flexbox" }}
       {...props}
     />
   );

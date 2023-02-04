@@ -1,9 +1,10 @@
-.over{
-    display: flex;
-    justify-content: space-between;
-    vertical-align: baseline;
-    width:100%;
-    flex-direction: row;
-    padding: 30px;
-    font-family: 'Courier New', Courier, monospace;
+.over {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: baseline;
+  width: 100%;
+  flex-direction: row;
+  padding: 30px;
+  font-family: "Courier New", Courier, monospace;
+  background: red;
 }

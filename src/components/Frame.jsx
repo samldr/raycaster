@@ -5,7 +5,6 @@ import "./Frame.css";
 import "../App.css";
 import { Bottombar } from "./Bottombar";
 
-
 export const Frame = () => {
   return (
     <div className="main">

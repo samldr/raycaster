@@ -67,7 +67,6 @@ myScene = new Scene(
     myMirror4,
     myWall,
     //myMirrorBall,
-    myMirrorBall,
     //myMirror5,
     myDialectric1,
     myDialectric2,
