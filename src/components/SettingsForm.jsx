@@ -20,7 +20,11 @@ rays per source
 
 */
 
-export const SettingsForm = () => {
+export const SettingsForm = (props) => {
+  // renderSettings={renderSettings}
+  // setRenderSettings={setRenderSettings}
+  // simulationSettings={simulationSettings}
+  // setSimulationSettings={setSimulationSettings}
   return (
     <>
       <Box sx={{ padding: 3, minWidth: 300 }}>
@@ -34,6 +38,13 @@ export const SettingsForm = () => {
               label="Ray thickness"
               variant="filled"
               sx={{ margin: 1 }}
+              defaultValue={props.renderSettings.rayThickness}
+              onBlur={(e) => {
+                props.setRenderSettings({
+                  ...props.renderSettings,
+                  rayThickness: e.target.value,
+                });
+              }}
             />
 
             <TextField
@@ -41,11 +52,30 @@ export const SettingsForm = () => {
               label="Ray alpha"
               variant="filled"
               sx={{ margin: 1 }}
+              defaultValue={props.renderSettings.rayTransparency}
+              onBlur={(e) => {
+                props.setRenderSettings({
+                  ...props.renderSettings,
+                  rayTransparency: e.target.value,
+                });
+                console.log(props.renderSettings.rayTransparency);
+              }}
             />
 
             <FormControlLabel
               label="Draw Scene Objects"
-              control={<Checkbox sx={{ ml: 1 }}></Checkbox>}
+              control={
+                <Checkbox
+                  sx={{ ml: 1 }}
+                  checked={props.renderSettings.drawSceneObjects}
+                  onChange={() => {
+                    props.setRenderSettings({
+                      ...props.renderSettings,
+                      drawSceneObjects: !props.renderSettings.drawSceneObjects,
+                    });
+                  }}
+                ></Checkbox>
+              }
             ></FormControlLabel>
           </FormGroup>
         </Paper>
@@ -58,7 +88,7 @@ export const SettingsForm = () => {
               control={
                 <Slider
                   aria-label="Max Bounces"
-                  defaultValue={5}
+                  defaultValue={props.simulationSettings.maxBounces}
                   valueLabelDisplay="auto"
                   step={1}
                   min={1}
@@ -81,6 +111,12 @@ export const SettingsForm = () => {
                     { value: 15, label: 15 },
                   ]}
                   sx={{ margin: 1, mb: 3 }}
+                  onBlur={(e, value) => {
+                    props.setSimulationSettings({
+                      ...props.simulationSettings,
+                      maxBounces: value,
+                    });
+                  }}
                 />
               }
               label="Max Bounces"
@@ -92,6 +128,13 @@ export const SettingsForm = () => {
               label="Number of Rays"
               variant="filled"
               sx={{ margin: 1 }}
+              defaultValue={props.simulationSettings.maxRays}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  maxRays: e.target.value,
+                });
+              }}
             />
 
             <TextField
@@ -99,6 +142,13 @@ export const SettingsForm = () => {
               label="Source Angle (deg)"
               variant="filled"
               sx={{ margin: 1 }}
+              defaultValue={props.simulationSettings.sourceAngle}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  sourceAngle: e.target.value,
+                });
+              }}
             />
 
             <TextField
@@ -106,6 +156,13 @@ export const SettingsForm = () => {
               label="Canvas Width"
               variant="filled"
               sx={{ margin: 1 }}
+              defaultValue={props.simulationSettings.canvasWidth}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  canvasWidth: e.target.value,
+                });
+              }}
             />
 
             <TextField
@@ -113,11 +170,25 @@ export const SettingsForm = () => {
               label="Canvas Height"
               variant="filled"
               sx={{ margin: 1 }}
+              defaultValue={props.simulationSettings.canvasHeight}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  canvasHeight: e.target.value,
+                });
+              }}
             />
 
             <FormControlLabel
               label="Fullscreen Canvas"
               control={<Checkbox sx={{ ml: 1 }}></Checkbox>}
+              checked={props.simulationSettings.fullscreenCanvas}
+              onChange={() => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  drawSceneObjects: !props.simulationSettings.fullscreenCanvas,
+                });
+              }}
             ></FormControlLabel>
 
             <Button variant="contained" sx={{ m: 1 }}>

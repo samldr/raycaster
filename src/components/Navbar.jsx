@@ -24,7 +24,13 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { SettingsForm } from "./SettingsForm";
 import { ListView } from "./ListView";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
+  // PROPS
+  // renderSettings
+  // setRenderSettings
+  // simulationSettings
+  // setSimulationSettings
+
   //new button
   const [newAnchor, setNewAnchor] = React.useState(null);
   const newOpen = Boolean(newAnchor);
@@ -118,7 +124,18 @@ export const Navbar = () => {
               open={settingsOpen}
               onClose={handleSettingsClose}
             >
-              <SettingsForm></SettingsForm>
+              <SettingsForm
+                renderSettings={props.renderSettings}
+                setRenderSettings={props.setRenderSettings}
+                simulationSettings={props.simulationSettings}
+                setSimulationSettings={props.setSimulationSettings}
+                maxBounces={props.maxBounces}
+                maxRays={props.maxRays}
+                sourceAngle={props.sourceAngle}
+                canvasWidth={props.canvasWidth}
+                canvasHeight={props.canvasHeight}
+                fullScreenCanvas={props.fullScreenCanvas}
+              ></SettingsForm>
             </Drawer>
             <Menu
               id="demo-positioned-menu"
