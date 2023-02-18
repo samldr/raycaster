@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useRef, useState } from "react";
 import {
   Slider,
   TextField,
@@ -25,6 +25,16 @@ export const SettingsForm = (props) => {
   // setRenderSettings={setRenderSettings}
   // simulationSettings={simulationSettings}
   // setSimulationSettings={setSimulationSettings}
+
+  //state values of simulation settings
+  //these are stored locally, then passed to the parent when the button is pressed
+  const [maxBounces, setMaxBounces] = useState(5);
+  const [maxRays, setMaxRays] = useState(1000);
+  const [sourceAngle, setSourceAngle] = useState(0);
+  const [canvasWidth, setCanvasWidth] = useState(500);
+  const [canvasHeight, setCanvasHeight] = useState(500);
+  const [fullscreenCanvas, setFullscreenCanvas] = useState(false);
+
   return (
     <>
       <Box sx={{ padding: 3, minWidth: 300 }}>
@@ -88,7 +98,11 @@ export const SettingsForm = (props) => {
               control={
                 <Slider
                   aria-label="Max Bounces"
-                  defaultValue={props.simulationSettings.maxBounces}
+                  defaultValue={maxBounces}
+                  onChangeCommitted={(e, value) => {
+                    setMaxBounces(value);
+                  }}
+                  on
                   valueLabelDisplay="auto"
                   step={1}
                   min={1}
@@ -111,12 +125,6 @@ export const SettingsForm = (props) => {
                     { value: 15, label: 15 },
                   ]}
                   sx={{ margin: 1, mb: 3 }}
-                  onBlur={(e, value) => {
-                    props.setSimulationSettings({
-                      ...props.simulationSettings,
-                      maxBounces: value,
-                    });
-                  }}
                 />
               }
               label="Max Bounces"
@@ -128,12 +136,9 @@ export const SettingsForm = (props) => {
               label="Number of Rays"
               variant="filled"
               sx={{ margin: 1 }}
-              defaultValue={props.simulationSettings.maxRays}
-              onBlur={(e) => {
-                props.setSimulationSettings({
-                  ...props.simulationSettings,
-                  maxRays: e.target.value,
-                });
+              defaultValue={maxRays}
+              onBlur={(e, value) => {
+                setMaxRays(value);
               }}
             />
 
@@ -142,12 +147,9 @@ export const SettingsForm = (props) => {
               label="Source Angle (deg)"
               variant="filled"
               sx={{ margin: 1 }}
-              defaultValue={props.simulationSettings.sourceAngle}
-              onBlur={(e) => {
-                props.setSimulationSettings({
-                  ...props.simulationSettings,
-                  sourceAngle: e.target.value,
-                });
+              defaultValue={sourceAngle}
+              onBlur={(e, value) => {
+                setSourceAngle(value);
               }}
             />
 
@@ -156,12 +158,9 @@ export const SettingsForm = (props) => {
               label="Canvas Width"
               variant="filled"
               sx={{ margin: 1 }}
-              defaultValue={props.simulationSettings.canvasWidth}
-              onBlur={(e) => {
-                props.setSimulationSettings({
-                  ...props.simulationSettings,
-                  canvasWidth: e.target.value,
-                });
+              defaultValue={canvasWidth}
+              onBlur={(e, value) => {
+                setCanvasWidth(value);
               }}
             />
 
@@ -170,28 +169,36 @@ export const SettingsForm = (props) => {
               label="Canvas Height"
               variant="filled"
               sx={{ margin: 1 }}
-              defaultValue={props.simulationSettings.canvasHeight}
-              onBlur={(e) => {
-                props.setSimulationSettings({
-                  ...props.simulationSettings,
-                  canvasHeight: e.target.value,
-                });
+              defaultValue={canvasHeight}
+              onBlur={(e, value) => {
+                setCanvasHeight(value);
               }}
             />
 
             <FormControlLabel
               label="Fullscreen Canvas"
               control={<Checkbox sx={{ ml: 1 }}></Checkbox>}
-              checked={props.simulationSettings.fullscreenCanvas}
-              onChange={() => {
-                props.setSimulationSettings({
-                  ...props.simulationSettings,
-                  drawSceneObjects: !props.simulationSettings.fullscreenCanvas,
-                });
+              checked={fullscreenCanvas}
+              onChange={(e, value) => {
+                setFullscreenCanvas(value);
               }}
             ></FormControlLabel>
 
-            <Button variant="contained" sx={{ m: 1 }}>
+            <Button
+              variant="contained"
+              onClick={() => {
+                props.setSimulationSettings({
+                  maxBounces: maxBounces,
+                  maxRays: maxRays,
+                  sourceAngle: sourceAngle,
+                  canvasWidth: canvasWidth,
+                  canvasHeight: canvasHeight,
+                  fullScreenCanvas: fullscreenCanvas,
+                });
+                console.log(props.simulationSettings);
+              }}
+              sx={{ m: 1 }}
+            >
               Re-simulate
             </Button>
           </FormGroup>

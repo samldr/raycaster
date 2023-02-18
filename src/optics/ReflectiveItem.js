@@ -1,5 +1,6 @@
 //reflective items reflect light
-Item = require("./Item");
+//Item = require("./Item");
+const { Item } = require("./Item");
 class ReflectiveItem extends Item {
   constructor() {
     //if this throws errors, just rewrite the constructor

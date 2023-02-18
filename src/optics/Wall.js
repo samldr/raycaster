@@ -1,7 +1,10 @@
-inRange = require("./util");
-Ray = require("./Ray.js");
+// inRange = require("./util");
+// Ray = require("./Ray.js");
+import { Ray } from "./Ray.js";
+import { inRange } from "./util";
+import { AbsorbingItem } from "./AbsorbingItem.js";
 const { intersect } = require("mathjs");
-const AbsorbingItem = require("./AbsorbingItem");
+// const AbsorbingItem = require("./AbsorbingItem");
 
 class Wall extends AbsorbingItem {
   endpoint1;

@@ -1,6 +1,8 @@
-inRange = require("./util");
-ReflectiveItem = require("./ReflectiveItem.js");
-Ray = require("./Ray.js");
+import { inRange } from "./util";
+//ReflectiveItem = require("./ReflectiveItem.js");
+const { ReflectiveItem } = require("./ReflectiveItem.js");
+//Ray = require("./Ray.js");
+const { Ray } = require("./Ray.js");
 const { intersect, dot, multiply, subtract, norm } = require("mathjs");
 
 class Mirror extends ReflectiveItem {
