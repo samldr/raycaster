@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import json from "../optics/sceneFile.json";
 
 const settings = require("../optics/settings.json");
 
@@ -29,7 +30,7 @@ const Canvas = (props) => {
     ctx.strokeStyle = "#ffffff";
 
     //drawing each ray
-    props.scene.rays.forEach((ray) => {
+    json.rays.forEach((ray) => {
       ctx.beginPath();
       ctx.moveTo(ray.segments[0][0], ray.segments[0][1]);
       ray.segments.forEach((segment) => ctx.lineTo(segment[0], segment[1]));
@@ -44,7 +45,7 @@ const Canvas = (props) => {
       ctx.lineWidth = 7;
 
       //drawing scene objects
-      props.scene.items.forEach((item) => {
+      json.items.forEach((item) => {
         if (item.type == null) {
         } else if (item.type === "mirror" || item.type === "dielectric") {
           ctx.strokeStyle = "#bdd2c5";

@@ -1,4 +1,4 @@
-import { React, useRef } from "react";
+import React from "react";
 import {
   Slider,
   TextField,
@@ -25,15 +25,6 @@ export const SettingsForm = (props) => {
   // setRenderSettings={setRenderSettings}
   // simulationSettings={simulationSettings}
   // setSimulationSettings={setSimulationSettings}
-
-  //refs
-  const maxBouncesRef = useRef();
-  const maxRaysRef = useRef();
-  const sourceAngleRef = useRef();
-  const canvasWidthRef = useRef();
-  const canvasHeightRef = useRef();
-  const fullscreenRef = useRef();
-
   return (
     <>
       <Box sx={{ padding: 3, minWidth: 300 }}>
@@ -96,7 +87,6 @@ export const SettingsForm = (props) => {
             <FormControlLabel
               control={
                 <Slider
-                  ref={maxBouncesRef}
                   aria-label="Max Bounces"
                   defaultValue={props.simulationSettings.maxBounces}
                   valueLabelDisplay="auto"
@@ -121,6 +111,12 @@ export const SettingsForm = (props) => {
                     { value: 15, label: 15 },
                   ]}
                   sx={{ margin: 1, mb: 3 }}
+                  onBlur={(e, value) => {
+                    props.setSimulationSettings({
+                      ...props.simulationSettings,
+                      maxBounces: value,
+                    });
+                  }}
                 />
               }
               label="Max Bounces"
@@ -128,63 +124,74 @@ export const SettingsForm = (props) => {
             />
 
             <TextField
-              ref={maxRaysRef}
               id="filled-basic"
               label="Number of Rays"
               variant="filled"
               sx={{ margin: 1 }}
               defaultValue={props.simulationSettings.maxRays}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  maxRays: e.target.value,
+                });
+              }}
             />
 
             <TextField
-              ref={sourceAngleRef}
               id="filled-basic"
               label="Source Angle (deg)"
               variant="filled"
               sx={{ margin: 1 }}
               defaultValue={props.simulationSettings.sourceAngle}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  sourceAngle: e.target.value,
+                });
+              }}
             />
 
             <TextField
-              ref={canvasWidthRef}
               id="filled-basic"
               label="Canvas Width"
               variant="filled"
               sx={{ margin: 1 }}
               defaultValue={props.simulationSettings.canvasWidth}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  canvasWidth: e.target.value,
+                });
+              }}
             />
 
             <TextField
-              ref={canvasHeightRef}
               id="filled-basic"
               label="Canvas Height"
               variant="filled"
               sx={{ margin: 1 }}
               defaultValue={props.simulationSettings.canvasHeight}
+              onBlur={(e) => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  canvasHeight: e.target.value,
+                });
+              }}
             />
 
             <FormControlLabel
-              ref={fullscreenRef}
               label="Fullscreen Canvas"
               control={<Checkbox sx={{ ml: 1 }}></Checkbox>}
               checked={props.simulationSettings.fullscreenCanvas}
+              onChange={() => {
+                props.setSimulationSettings({
+                  ...props.simulationSettings,
+                  drawSceneObjects: !props.simulationSettings.fullscreenCanvas,
+                });
+              }}
             ></FormControlLabel>
 
-            <Button
-              variant="contained"
-              onClick={() => {
-                props.setSimulationSettings({
-                  maxBounces: maxBouncesRef.current.value,
-                  maxRays: maxRaysRef.current.value,
-                  sourceAngle: sourceAngleRef.current.value,
-                  canvasWidth: canvasWidthRef.current.value,
-                  canvasHeight: canvasHeightRef.current.value,
-                  fullScreenCanvas: fullscreenRef.current.checked,
-                });
-                console.log(props.simulationSettings);
-              }}
-              sx={{ m: 1 }}
-            >
+            <Button variant="contained" sx={{ m: 1 }}>
               Re-simulate
             </Button>
           </FormGroup>

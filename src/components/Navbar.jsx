@@ -129,6 +129,12 @@ export const Navbar = (props) => {
                 setRenderSettings={props.setRenderSettings}
                 simulationSettings={props.simulationSettings}
                 setSimulationSettings={props.setSimulationSettings}
+                maxBounces={props.maxBounces}
+                maxRays={props.maxRays}
+                sourceAngle={props.sourceAngle}
+                canvasWidth={props.canvasWidth}
+                canvasHeight={props.canvasHeight}
+                fullScreenCanvas={props.fullScreenCanvas}
               ></SettingsForm>
             </Drawer>
             <Menu

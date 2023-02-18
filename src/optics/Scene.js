@@ -25,10 +25,10 @@ class Scene {
     }
 
     //bounding box
-    this.items.push(new Wall(-10, -10, 1010, -10));
-    this.items.push(new Wall(1010, 1010, 1010, -10));
-    this.items.push(new Wall(1010, 1010, -10, 1010));
-    this.items.push(new Wall(-10, -10, -10, 1010));
+    items.push(new Wall(-10, -10, 1010, -10));
+    items.push(new Wall(1010, 1010, 1010, -10));
+    items.push(new Wall(1010, 1010, -10, 1010));
+    items.push(new Wall(-10, -10, -10, 1010));
 
     //creates all the rays
     //TODO: Abstract all the ray creation into "Source"
